@@ -33,3 +33,4 @@ Route::get('settings/menu', 'SettingsController@menu')->name('settings.menu');
 Route::get('settings/footer', 'SettingsController@footer')->name('settings.footer');
 Route::get('settings/fonts', 'SettingsController@fonts')->name('settings.fonts');
 Route::get('settings/colors', 'SettingsController@colors')->name('settings.colors');
+Route::get('/seeder', 'CreateSeeder@index');

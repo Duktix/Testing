@@ -210,7 +210,7 @@
                                     <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="icon-size-fullscreen"></i></a>
                                 </li>
                                 <li class="dropdown top-menu-item-xs">
-                                    <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
+                                    <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)"><i class="ti-user m-r-10 text-custom"></i> Profile</a></li>
                                         <li><a href="javascript:void(0)"><i class="ti-settings m-r-10 text-custom"></i> Settings</a></li>
@@ -251,7 +251,7 @@
                                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-files"></i><span> Options </span> <span class="menu-arrow"></span></a>
 								<ul class="list-unstyled">
                                     <li><a href="{{ route('settings.header') }}">Header</a></li>
-									<li><a href="{{ route('settings.menu') }}">Menu</a></li>
+									<li><a href="{{ route('menu.index') }}">Menu</a></li>
                                     <li><a href="{{ route('settings.fonts') }}">Fonts</a></li>
                                     <li><a href="{{ route('settings.colors') }}">Colors</a></li>
                                     <li><a href="{{ route('settings.footer') }}">Footer</a></li>
@@ -278,6 +278,7 @@
 			</div>
 		</div>
     </div>
+	@yield('footerextra')
 	<script src="{{ asset('assets/js/jquery.core.js') }}"></script>
 	<script src="{{ asset('assets/js/jquery.app.js') }}"></script>
 </body>

@@ -1,0 +1,41 @@
+{
+    "name": "Test Theme",
+    "description": "The Laravel Framework.",
+	"menu_locations" : {
+        "menu_location_top": "Top",
+        "menu_location_primary": "Primary",
+        "menu_location_footer": "Footer"
+    },
+	"logos" : {
+		"static_logo" : "Logo Static",
+		"footer_logo" : "Footer Logo"
+	},
+	"options" : {
+		"transparent_header" : {
+			"title" : "Transparent Header",
+			"default" : "true",
+			"extra" : {
+				"transparent_home_only" : {"title" : "Home Only", "type" : "checkbox"}
+			}
+		},
+		"static_header" : {
+			"title" : "Static Header",
+			"default" : "true",
+			"extra" : {
+				"static_home_only" : {"title" : "Home Only", "type" : "checkbox", "default" : "false"},
+				"static_background_color" : {"title" : "Background Color (Static)", "type" : "picker", "default" : "rgb(255, 146, 180, 1)"},
+				"static_menu_item_color" : {"title" : "Menu item Color (Static)", "type" : "picker", "default" : "rgb(255, 146, 180, 1)"},
+				"static_menu_item_color_hover" : {"title" : "Menu item Color (Hover)", "type" : "picker", "default" : "rgb(255, 146, 180, 1)"}
+			}
+		}
+	},
+	"headers" : {
+		"header1" : "Header 1",
+		"header2" : "Header 2",
+		"header3" : "Header 3",
+		"header4" : "Header 4"
+	},
+	"colors" : {
+		"body_color" : {"title" : "Body Text Color", "default" : "rgba(0,0,0,1)"}
+	}
+}

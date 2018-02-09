@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-	
+
 	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 	<!-- content box -->
@@ -19,10 +19,27 @@
 	@yield('styles')
 	
 	@yield('scripts')
+	@if(!$preview)
 	<link href="{{ asset('assets/css/builder.css') }}" rel="stylesheet">
 	<script>var csrf_field = '{{csrf_field()}}';</script>
+	@endif
+	
+	@if($preview)
+	{!! !empty($headersettings['custom_code_header_others']) ? $headersettings['custom_code_header_others'] : '' !!}
+	<style>
+	{!! !empty($headersettings['custom_code_header_css']) ? $headersettings['custom_code_header_css'] : '' !!}
+	</style>
+	<script>
+	{!! !empty($headersettings['custom_code_header_js']) ? $headersettings['custom_code_header_js'] : '' !!}
+	</script>
+	@endif
 </head>
 <body>
+@if($preview)
+	{!! !empty($headersettings['custom_code_body']) ? $headersettings['custom_code_body'] : '' !!}
+@endif
+
+@if(!$preview)
 <div class="builder_controls text-center">
 	<div class="container">
 		<ul>
@@ -32,6 +49,7 @@
 		</ul>
 	</div>
 </div>
+@endif
 
 @yield('header')
 
@@ -44,19 +62,22 @@
 <div class="is-wrapper">
 @if($page->html)
 	{!! $page->html !!}
-@else:
+@else
 	@yield('wrapper')
 @endif
 </div>
 
+@if(!$preview)
 <form id="form1" method="post" style="display:none" action="{{ route("pages.savehtml") }}">
 	{{csrf_field()}}
 	<input type="hidden" id="pageid" name="pageid" value="{{ $page->id }}" />
 	<input type="hidden" id="hidContent" name="hidContent" />
 	<input type="submit" id="btnPost" value="submit" />
 </form>
+@endif
 
 @yield('footer')
+@if(!$preview)
 <script src="{{ asset('contentbuilder/contentbuilder/jquery-ui.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('contentbuilder/contentbuilder/contentbuilder.js') }}" type="text/javascript"></script>
 <script src="{{ asset('contentbuilder/contentbuilder/saveimages.js') }}" type="text/javascript"></script>
@@ -102,5 +123,6 @@ jQuery(document).ready(function($){
 	});
 })
 </script>
+@endif
 </body>
 </html>

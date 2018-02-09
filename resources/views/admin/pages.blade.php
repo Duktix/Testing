@@ -57,6 +57,7 @@
 								<ul class="buttons">
 									<li><a href="">View</a></li>
 									<li><a href="{{URL::route('pages.edit', $page->id)}}">Edit</a></li>
+									<li><a href="{{URL::route('pages.preview', $page->id)}}" target="_blank">Preview</a></li>
 									<li><a href="">Trash</a></li>
 								</ul>
 								</td>

@@ -24,7 +24,7 @@
 								<img src="{{ asset('/templates/'.$theme['name'].'/screenshot.png') }}" class="thumb-img" alt="work-thumbnail">
 								<div class="row">
 									<div class="col-xs-4  m-t-15">
-									<h5>{{ $theme['name'] }}</h5>
+									<h5>{{ getThemeName($theme['name']) }}</h5>
 									</div>
 									<div class="col-xs-8 m-t-15 text-right">
 									@if($theme['active'])

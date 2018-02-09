@@ -8,11 +8,18 @@
 <link href="{{ IncludeAsset('css/font-awesome.min.css') }}" rel="stylesheet">
 <link href="{{ IncludeAsset('snippets-assets/minimalist-basic/content-bootstrap.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ IncludeAsset('css/style.css') }}" rel="stylesheet">
+<style>
+@if($preview)
+	@include('templates.'.$theme.'.customcss')
+@endif
+</style>
 @endsection
 
 @section('header')
 
-
+@if($preview)
+	@include('templates.'.$theme.'.header')
+@endif
 
 @endsection
 @section('wrapper')
@@ -42,37 +49,6 @@
 @endsection
 @section('footer')
 
-        <!-- Back to top -->    
-        <a href="#" class="back-to-top" id="back-to-top"> <i class="fa fa-angle-up"></i> </a>
-
-
-        <!-- js placed at the end of the document so the pages load faster -->
-        <script src="{{ IncludeAsset('js/jquery-2.1.4.min.js') }}"></script>
-        <script src="{{ IncludeAsset('js/bootstrap.min.js') }}"></script>
-        <!-- Jquery easing -->                                                      
-        <script type="text/javascript" src="{{ IncludeAsset('js/jquery.easing.1.3.min.js') }}"></script>
-
-        <!-- Owl Carousel -->                                                      
-        <script type="text/javascript" src="{{ IncludeAsset('js/owl.carousel.min.js') }}"></script>
-
-        <!--sticky header-->
-        <script type="text/javascript" src="{{ IncludeAsset('js/jquery.sticky.js') }}"></script>
-
-        <!--common script for all pages-->
-        <script src="{{ IncludeAsset('js/jquery.app.js') }}"></script>
-
-        <script type="text/javascript">
-            $('.owl-carousel').owlCarousel({
-                loop:true,
-                margin:10,
-                nav:false,
-                autoplay: true,
-                autoplayTimeout: 4000,
-                responsive:{
-                    0:{
-                        items:1
-                    }
-                }
-            })
-        </script>
+        @include('templates.'.$theme.'.footer')
+		
 @endsection

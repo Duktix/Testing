@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pages;
 use App\theme;
+use App\Settings;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 class PagesController extends Controller
@@ -31,7 +32,6 @@ class PagesController extends Controller
         ]);*/
 		if($request->title!='' && $request->slug!=''){
 			$page = new Pages;
-			$page->site_id = 22;
 			$page->html = '';
 			$page->meta_title = '';
 			$page->meta_description = '';
@@ -62,7 +62,28 @@ class PagesController extends Controller
 		$currenttheme = theme::getCurrentTheme();
 		$page = Pages::find($id);
 		if($page){
-			return view('templates.'.$currenttheme['name'].'.index',['page' => $page]);
+			return view('templates.'.$currenttheme['name'].'.index',['page' => $page, 'theme' => $currenttheme['name'], 'preview'=> false]);
+		}else{
+			return abort(404);
+		}
+	}
+	public function preview($id)
+    {
+		$currenttheme = theme::getCurrentTheme();
+		$page = Pages::find($id);
+		$header = Settings::where('type', "header")->first();
+		$footer = Settings::where('type', "footer")->first();
+		if($page){
+			$headersettings = false;
+			$footersettings = false;
+			if(!empty($header)){
+			$headersettings = unserialize($header->setting);
+			}
+			if(!empty($footer)){
+			$footersettings = unserialize($footer->setting);
+			$footersettings['html'] = filterOutput($footersettings['html']);
+			}
+			return view('templates.'.$currenttheme['name'].'.index',['page' => $page, 'theme' => $currenttheme['name'], 'preview'=> true, 'headersettings'=>$headersettings, 'footersettings'=>$footersettings]);
 		}else{
 			return abort(404);
 		}

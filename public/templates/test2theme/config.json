@@ -1,0 +1,9 @@
+{
+    "name": "Test Theme",
+    "description": "The Laravel Framework.",
+	"menu_locations" : {
+        "top": "Top",
+        "primary": "Primary",
+        "footer": "Footer"
+    }
+}

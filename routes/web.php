@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/authenticate/remote/{user}', 'ImpersonateUser@Impersonate');
 
 Route::resource('pages', 'PagesController');
 Route::get('/snippets/snippet', 'PagesController@snippets')->name('pages.snippets');
@@ -27,10 +28,20 @@ Route::resource('themes', 'ThemesController');
 Route::post('pages/savehtml', 'PagesController@savehtml')->name('pages.savehtml');
 Route::post('pages/saveimage', 'PagesController@saveimage')->name('pages.saveimage');
 Route::post('pages/savecover', 'PagesController@savecover')->name('pages.savecover');
+Route::get('pages/{id}/preview', 'PagesController@preview')->name('pages.preview');
+
 
 Route::get('settings/header', 'SettingsController@header')->name('settings.header');
-Route::get('settings/menu', 'SettingsController@menu')->name('settings.menu');
+Route::resource('settings/menu', 'MenuController');
 Route::get('settings/footer', 'SettingsController@footer')->name('settings.footer');
 Route::get('settings/fonts', 'SettingsController@fonts')->name('settings.fonts');
 Route::get('settings/colors', 'SettingsController@colors')->name('settings.colors');
+Route::post('settings/header/save', 'SettingsController@saveSettings')->name('settings.saveheader');
+Route::post('settings/menu/save', 'SettingsController@saveSettings')->name('settings.savemenu');
+Route::post('settings/footer/save', 'SettingsController@saveSettings')->name('settings.savefooter');
+Route::post('settings/fonts/save', 'SettingsController@saveSettings')->name('settings.savefonts');
+Route::post('settings/colors/save', 'SettingsController@saveSettings')->name('settings.savecolors');
+
+
+
 Route::get('/seeder', 'CreateSeeder@index');

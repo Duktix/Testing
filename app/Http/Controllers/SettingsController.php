@@ -68,7 +68,6 @@ class SettingsController extends Controller
     {
 		$process = new Process('cd '.base_path().';git reset --hard origin/master');
 		$process->run();
-		dd($process->getOutput());
 		return redirect()->back();
     }
 	public function saveSettings(Request $requests)

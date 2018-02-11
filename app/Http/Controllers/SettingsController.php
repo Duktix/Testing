@@ -66,7 +66,7 @@ class SettingsController extends Controller
     }
 	public function update()
     {
-		$process = new Process('cd '.base_path().';git fetch --all;git reset --hard origin/master');
+		$process = new Process('cd '.base_path().';git reset --hard origin/master;git clean -f -d');
 		$process->run();
 		dd($process->getOutput());
 		return redirect()->back();

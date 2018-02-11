@@ -33,6 +33,7 @@ Route::get('pages/{id}/preview', 'PagesController@preview')->name('pages.preview
 
 Route::get('settings/header', 'SettingsController@header')->name('settings.header');
 Route::resource('settings/menu', 'MenuController');
+Route::get('settings/update', 'SettingsController@update')->name('settings.update');
 Route::get('settings/footer', 'SettingsController@footer')->name('settings.footer');
 Route::get('settings/fonts', 'SettingsController@fonts')->name('settings.fonts');
 Route::get('settings/colors', 'SettingsController@colors')->name('settings.colors');

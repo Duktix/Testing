@@ -83,16 +83,7 @@
                             </div>
 
                             <ul class="nav navbar-nav hidden-xs">
-                                <li><a href="javascript:void(0);" class="waves-effect waves-light">Files</a></li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li><a href="#">Separated link</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{ route('settings.update') }}" class="waves-effect waves-light" style="background: #5fbeaa;">Update Dashboard</a></li>
                             </ul>
 
 

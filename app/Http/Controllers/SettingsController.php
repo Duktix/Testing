@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 use Illuminate\Http\Request;
 
@@ -61,6 +63,13 @@ class SettingsController extends Controller
 		$currenttheme = theme::getCurrentTheme();
 		$colors = getThemeConfig($currenttheme['name'],'colors');
         return view('admin.colors', ['colors' => $colors]);
+    }
+	public function update()
+    {
+		$process = new Process('cd '.base_path().';git fetch --all;git reset --hard origin/master');
+		$process->run();
+		dd($process->getOutput());
+		return redirect()->back();
     }
 	public function saveSettings(Request $requests)
     {

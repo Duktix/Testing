@@ -46,4 +46,4 @@ Route::post('settings/colors/save', 'SettingsController@saveSettings')->name('se
 
 
 Route::get('/seeder', 'CreateSeeder@index');
-Route::get('settings/resetdb', 'CreateSeeder@resetdb');
+Route::post('settings/resetdb', 'CreateSeeder@resetdb');

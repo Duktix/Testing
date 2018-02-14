@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Illuminate\Http\Request;
-
+use Artisan;
 class CreateSeeder extends Controller
 {
     public function Index()
@@ -12,10 +12,23 @@ class CreateSeeder extends Controller
 		exec('php artisan db:seed --class=UsersTableSeeder');
 		exec('git push origin master');
 	}
-	public function resetdb()
+	public function resetdb(Request $request)
     {
-		$process = new Process('php artisan migrate;php artisan db:seed --class=UsersTableSeeder');
-		$process->run();
-		return redirect()->back();
+		Artisan::call('migrate:refresh', [
+			'--force' => true,
+		]);
+		Artisan::call('db:seed', [
+			'--class' => 'UsersTableSeeder',
+		]);
+		\DB::table('users')->insert(array (
+            0 => 
+            array (
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->pass,
+                'role' => 'site-admin',
+                'remember_token' => NULL,
+            ),
+        ));
 	}
 }

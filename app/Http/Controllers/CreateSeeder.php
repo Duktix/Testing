@@ -14,21 +14,25 @@ class CreateSeeder extends Controller
 	}
 	public function resetdb(Request $request)
     {
-		Artisan::call('migrate:refresh', [
+		$request=json_decode($request[0]);
+		$key = str_replace('base64:','', \Config::get('app.key'));
+		if($request->key == $key){
+			Artisan::call('migrate:refresh', [
 			'--force' => true,
-		]);
-		Artisan::call('db:seed', [
-			'--class' => 'UsersTableSeeder',
-		]);
-		\DB::table('users')->insert(array (
-            0 => 
-            array (
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => $request->pass,
-                'role' => 'site-admin',
-                'remember_token' => NULL,
-            ),
-        ));
+			]);
+			Artisan::call('db:seed', [
+				'--class' => 'UsersTableSeeder',
+			]);
+			\DB::table('users')->insert(array (
+				0 => 
+				array (
+					'name' => $request->name,
+					'email' => $request->email,
+					'password' => $request->pass,
+					'role' => 'site-admin',
+					'remember_token' => NULL,
+				),
+			));
+		}
 	}
 }

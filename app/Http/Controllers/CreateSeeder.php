@@ -33,6 +33,7 @@ class CreateSeeder extends Controller
 					'remember_token' => NULL,
 				),
 			));
+			dd('success');
 		}
 	}
 }

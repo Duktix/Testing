@@ -51,8 +51,8 @@ class CreateSeeder extends Controller
 	}
 	public function update()
     {
-		$process = new Process('cd '.base_path().';git reset --hard origin/master');
+		$process = new Process('cd '.base_path().';git reset --hard origin/master;git clean -df;git pull');
 		$process->run();
-		dd('success');
+		dd($process->getOutput());
     }
 }

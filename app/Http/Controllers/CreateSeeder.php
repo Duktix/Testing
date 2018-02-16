@@ -20,9 +20,9 @@ class CreateSeeder extends Controller
 			Artisan::call('migrate:refresh', [
 			'--force' => true,
 			]);
-			Artisan::call('db:seed', [
+			/*Artisan::call('db:seed', [
 				'--class' => 'UsersTableSeeder',
-			]);
+			]);*/
 			\DB::table('users')->insert(array (
 				0 => 
 				array (

@@ -53,6 +53,6 @@ class CreateSeeder extends Controller
     {
 		$process = new Process('cd '.base_path().';git reset --hard origin/master;git clean -df;git pull');
 		$process->run();
-		dd($process->getOutput());
+		dd('success');
     }
 }

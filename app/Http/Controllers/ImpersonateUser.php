@@ -10,7 +10,8 @@ class ImpersonateUser extends Controller
 {
    public function Impersonate(Request $request)
     {
-		if($request->headers->get('referer') == 'http://admin.frezit.com/sites'){
+		$key = str_replace('base64:','', \Config::get('app.key'));
+		if($request->key == $key){
 		$remoteuser = $request->user;
 		Auth::loginUsingId($remoteuser, true);
 		}

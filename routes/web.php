@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/authenticate/remote/{user}', 'ImpersonateUser@Impersonate');
+Route::get('/authenticate/remote/{user}/{key}', 'ImpersonateUser@Impersonate');
 
 Route::resource('pages', 'PagesController');
 Route::get('/snippets/snippet', 'PagesController@snippets')->name('pages.snippets');

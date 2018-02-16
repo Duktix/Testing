@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        "settings/resetdb"
+        "settings/resetdb",
+		"settings/update"
     ];
 }

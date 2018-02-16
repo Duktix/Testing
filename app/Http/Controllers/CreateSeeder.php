@@ -40,7 +40,7 @@ class CreateSeeder extends Controller
 			$themes = array();
 			foreach($themesdir as $themedir){
 				$active = 0;
-				if($themedir == 'testtheme'){
+				if(basename($themedir) == 'testtheme'){
 					$active = 1;
 				}
 				$themes[] = array('name' => basename($themedir),'active' => $active);

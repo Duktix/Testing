@@ -26,7 +26,6 @@ class CreateSeeder extends Controller
 			\DB::table('users')->insert(array (
 				0 => 
 				array (
-					'id' => $request->id,
 					'name' => $request->name,
 					'email' => $request->email,
 					'password' => $request->pass,

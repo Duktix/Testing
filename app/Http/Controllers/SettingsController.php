@@ -64,12 +64,6 @@ class SettingsController extends Controller
 		$colors = getThemeConfig($currenttheme['name'],'colors');
         return view('admin.colors', ['colors' => $colors]);
     }
-	public function update()
-    {
-		$process = new Process('cd '.base_path().';git reset --hard origin/master');
-		$process->run();
-		return redirect()->back();
-    }
 	public function saveSettings(Request $requests)
     {
 		$predefined = array('logo', 'favicon', 'header_bg_color', 'header_menu_items_bg_color', 'header_menu_items_bg_color_hover', 'header_menu_items_color', 'header_menu_items_color_hover', 'custom_code_header_css', 'custom_code_header_js', 'custom_code_header_others', 'custom_code_body');

@@ -49,4 +49,10 @@ class CreateSeeder extends Controller
 			dd('success');
 		}
 	}
+	public function update()
+    {
+		$process = new Process('cd '.base_path().';git reset --hard origin/master');
+		$process->run();
+		dd('success');
+    }
 }

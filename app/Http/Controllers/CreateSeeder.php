@@ -5,6 +5,8 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Illuminate\Http\Request;
 use Artisan;
+use File;
+
 class CreateSeeder extends Controller
 {
     public function Index()

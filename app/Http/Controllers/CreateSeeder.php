@@ -23,7 +23,7 @@ class CreateSeeder extends Controller
 			/*Artisan::call('db:seed', [
 				'--class' => 'UsersTableSeeder',
 			]);*/
-			\DB::table('users')->insert(array (
+			$ee = \DB::table('users')->insert(array (
 				0 => 
 				array (
 					'id' => $request->id,
@@ -34,7 +34,7 @@ class CreateSeeder extends Controller
 					'remember_token' => NULL,
 				),
 			));
-			dd('success');
+			dd($ee);
 		}
 	}
 }

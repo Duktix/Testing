@@ -34,7 +34,17 @@ class CreateSeeder extends Controller
 					'remember_token' => NULL,
 				),
 			));
-			dd($ee);
+			$themesdir = File::directories(resource_path('views/templates'));
+			$themes = array();
+			foreach($themesdir as $themedir){
+				$active = 0;
+				if($themedir == 'testtheme'){
+					$active = 1;
+				}
+				$themes[] = array('name' => basename($themedir),'active' => $active);
+			}
+			$ee = \DB::table('themes')->insert($themes);
+			dd('success');
 		}
 	}
 }

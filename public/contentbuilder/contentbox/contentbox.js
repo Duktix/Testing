@@ -1190,7 +1190,7 @@ ContentBox.js ver.1.2.7
             this.settings = jQuery.extend({}, defaults, options);
 
             var iconselect = this.settings.iconselect;
-
+			
             /*
             if (iconselect != '') {
             $element.removeClass('use-select-icon');
